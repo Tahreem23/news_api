@@ -1,8 +1,21 @@
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 import datetime
 
 app = FastAPI()
+
+origins = [
+    "*",  # Allow all origins
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 API_KEY = "eff0da1b31144e8da7ba3ff9df6876e2"
 
